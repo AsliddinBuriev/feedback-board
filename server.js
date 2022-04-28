@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 import app from './src/app.js';
 import pool from './src/pool.js';
 config({ path: './config.env' });
-
+//connection to the database
 pool.connect({
 	user: process.env.PGUSER,
 	host: process.env.PGHOST,
