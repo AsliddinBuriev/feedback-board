@@ -1,0 +1,22 @@
+{
+	"name": "feedback_api",
+	"version": "1.0.0",
+	"description": "feedback system for software apps",
+	"main": "server.js",
+	"type": "module",
+	"scripts": {
+		"migrate:up": "node ./migrations/migration.js up",
+		"migrate:down": "node ./migrations/migration.js down",
+		"start": "nodemon  ./server.js",
+		"start:prod": "NODE_ENV=production nodemon ./server.js"
+	},
+	"author": "REMIAN CODERS",
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.0",
+		"express": "^4.17.3",
+		"pg": "^8.7.3",
+		"pg-format": "^1.0.4"
+	}
+}
