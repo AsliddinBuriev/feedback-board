@@ -10,7 +10,7 @@ class Pool {
 		this._pool.end();
 	};
 	query = (sql, params) => {
-		return this._pool.query(sql);
+		return this._pool.query(sql, params);
 	};
 }
 export default new Pool();
