@@ -10,30 +10,33 @@ class UserContrls {
 			data: { users },
 		});
 	});
-	static getUserById = catchAsyncErr(async (req, res, next) => {
-		const user = await UserRepo.findById(req.params.userId);
-		if (!user) return next(new CustomError('User not found', 404));
-		res.status(200).json({
-			message: 'User found',
-			data: { user },
-		});
-	});
+
 	static createUser = catchAsyncErr(async (req, res, next) => {
-		const user = await UserRepo.insert(req.userId, req.body);
+		const user = await UserRepo.insert(req.body);
 		res.status(201).json({
 			message: 'User created',
 			data: { user },
 		});
 	});
-
-	static updateUser = catchAsyncErr(async (req, res, next) => {
+	static getUserById = catchAsyncErr(async (req, res, next) => {
+		const user = await UserRepo.findById(req.params.userId);
 		res.status(200).json({
-			message: 'Handling PATCH requests to /users/:userId',
+			message: 'User found',
+			data: { user },
+		});
+	});
+	static updateUser = catchAsyncErr(async (req, res, next) => {
+		const user = await UserRepo.update(req.params.userId, req.body);
+		res.status(200).json({
+			message: 'User updated',
+			data: { user },
 		});
 	});
 	static deleteUser = catchAsyncErr(async (req, res, next) => {
+		const user = await UserRepo.delete(req.params.userId);
 		res.status(200).json({
-			message: 'Handling DELETE requests to /users/:userId',
+			message: 'User deleted',
+			data: { user },
 		});
 	});
 }

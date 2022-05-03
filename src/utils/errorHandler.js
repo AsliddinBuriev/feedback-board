@@ -3,7 +3,8 @@ export default (err, req, res, next) => {
 	const error = customize(err);
 	if (process.env.NODE_ENV === 'development') {
 		res.status(error.statusCode).json({
-			err,
+			status: error.status,
+			message: error.message,
 		});
 	} else if (process.env.NODE_ENV === 'production') {
 		if (!error.isOperational) {
