@@ -11,12 +11,12 @@ class UserRepo {
 		SELECT * FROM users 
 		WHERE id = $1`;
 		const { rows } = await Pool.query(sql, [id]);
-		return rows[0];
+		return camelCase(rows)[0];
 	}
 	static async findOne(email) {
 		const sql = `SELECT * FROM users WHERE email = $1`;
 		const { rows } = await Pool.query(sql, [email]);
-		return rows[0];
+		return camelCase(rows)[0];
 	}
 	static async insert(body) {
 		const values = [body.username, body.email, body.password];
@@ -25,18 +25,28 @@ class UserRepo {
 		VALUES ($1, $2, $3) 
 		RETURNING *`;
 		const { rows } = await Pool.query(sql, values);
-		return rows[0];
+		return camelCase(rows)[0];
 	}
 	static async update(id, body) {
 		const sql = `
 		UPDATE users
-		SET username = $1,email = $2
+		SET username = $1, email = $2, updated_at = current_timestamp
 		WHERE id = $3
+		RETURNING *;
 		`;
 		const values = [body.username, body.email, id];
 		const { rows } = await Pool.query(sql, values);
+		return camelCase(rows)[0];
 	}
-	static async delete(id) {}
+	static async delete(id) {
+		const sql = `
+		DELETE FROM users
+		WHERE id = $1
+		RETURNING *;
+		`;
+		const { rows } = await Pool.query(sql, [id]);
+		return camelCase(rows)[0];
+	}
 }
 
 export default UserRepo;

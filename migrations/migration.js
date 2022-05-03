@@ -17,8 +17,9 @@ const up = async () => {
 			email VARCHAR(50) NOT NULL UNIQUE,
 			password VARCHAR(255) NOT NULL,
 			password_changed_at TIMESTAMP,
-			created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-			updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+			image VARCHAR(255),
+			created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+			updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
 			password_reset_token VARCHAR(255),
 			password_reset_expires TIMESTAMP
 		);
@@ -31,8 +32,7 @@ const up = async () => {
 			description VARCHAR(255),
 			url VARCHAR(255),
 			github_link VARCHAR(255),
-			cover_image VARCHAR(255),
-			images VARCHAR[]
+			image VARCHAR(255)
 		);
 		CREATE TABLE IF NOT EXISTS suggestions (
 			id SERIAL PRIMARY KEY NOT NULL,
