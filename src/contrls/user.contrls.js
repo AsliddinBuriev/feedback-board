@@ -10,14 +10,6 @@ class UserContrls {
 			data: { users },
 		});
 	});
-
-	static createUser = catchAsyncErr(async (req, res, next) => {
-		const user = await UserRepo.insert(req.body);
-		res.status(201).json({
-			message: 'User created',
-			data: { user },
-		});
-	});
 	static getUserById = catchAsyncErr(async (req, res, next) => {
 		const user = await UserRepo.findById(req.params.userId);
 		res.status(200).json({

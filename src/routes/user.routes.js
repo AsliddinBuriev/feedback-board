@@ -2,7 +2,10 @@ import { Router } from 'express';
 import UserContrls from '../contrls/user.contrls.js';
 const router = Router();
 
-router.route('/').get(UserContrls.getAllUsers).post(UserContrls.createUser);
+router.route('/').get(UserContrls.getAllUsers);
+
+router.post('/signup');
+router.post('/login');
 
 router
 	.route('/:userId')
