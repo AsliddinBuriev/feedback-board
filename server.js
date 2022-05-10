@@ -1,8 +1,8 @@
 import { config } from 'dotenv';
-import app from './src/app.js';
+import App from './src/app.js';
 import pool from './src/pool.js';
 config({ path: './config.env' });
-
+const app = new App();
 pool.connect({
 	user: process.env.PGUSER,
 	host: process.env.PGHOST,
