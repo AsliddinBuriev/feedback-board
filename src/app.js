@@ -23,7 +23,7 @@ class App {
 		);
 	}
 	errorHandler() {
-		app.use(errorHandler);
+		this.app.use(errorHandler);
 	}
 }
 
