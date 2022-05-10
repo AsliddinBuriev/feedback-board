@@ -7,7 +7,7 @@
 	"scripts": {
 		"migrate:up": "node ./migrations/migration.js up",
 		"migrate:down": "node ./migrations/migration.js down",
-		"start": "nodemon  ./server.js",
+		"start": "nodemon  ./src/server.js",
 		"start:prod": "NODE_ENV=production nodemon ./server.js"
 	},
 	"author": "REMIAN CODERS",
